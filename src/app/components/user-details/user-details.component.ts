@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { UsersList } from 'src/app/data/users-list';
 import { IUser } from 'src/app/interfaces/user/user.interface';
 
@@ -8,5 +8,5 @@ import { IUser } from 'src/app/interfaces/user/user.interface';
   styleUrls: ['./user-details.component.scss']
 })
 export class UserDetailsComponent {
-  users: IUser[] = UsersList;
+  @Input({ required: true }) user: IUser = {} as IUser;
 }
