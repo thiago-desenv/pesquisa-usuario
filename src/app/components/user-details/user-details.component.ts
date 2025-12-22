@@ -8,6 +8,5 @@ import { IUser } from 'src/app/interfaces/user/user.interface';
   styleUrls: ['./user-details.component.scss']
 })
 export class UserDetailsComponent {
-  // @Input({ required: true }) user: IUser = {} as IUser;
-  user: IUser = UsersList[0];
+  @Input({ required: true }) user: IUser = {} as IUser;
 }
