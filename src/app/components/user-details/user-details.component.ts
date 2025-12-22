@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { UsersList } from 'src/app/data/users-list';
 import { IUser } from 'src/app/interfaces/user/user.interface';
 
