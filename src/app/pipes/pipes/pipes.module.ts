@@ -14,7 +14,8 @@ import { AddressPipe } from './address.pipe';
     CommonModule
   ],
   exports: [
-    PhonePipe
+    PhonePipe,
+    AddressPipe
   ]
 })
 export class PipesModule { }
