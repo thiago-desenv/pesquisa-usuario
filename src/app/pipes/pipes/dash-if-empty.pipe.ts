@@ -5,8 +5,12 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class DashIfEmptyPipe implements PipeTransform {
 
-  transform(value: unknown, ...args: unknown[]): unknown {
-    return null;
-  }
+  transform(value: any): string | any {
+    const IS_EMPTY = value === undefined || value === null || value === '';
+    if(IS_EMPTY) {
+      return '-';
+    }
 
+    return value;
+  }
 }

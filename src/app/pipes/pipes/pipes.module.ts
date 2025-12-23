@@ -20,7 +20,8 @@ import { DashIfEmptyPipe } from './dash-if-empty.pipe';
   exports: [
     PhonePipe,
     AddressPipe,
-    StatusPipe
+    StatusPipe,
+    DashIfEmptyPipe
   ]
 })
 export class PipesModule { }
