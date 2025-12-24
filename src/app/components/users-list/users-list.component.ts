@@ -9,7 +9,7 @@ import { IUser } from 'src/app/interfaces/user/user.interface';
 })
 export class UsersListComponent {
   displayedColumns: string[] = [ 'name', 'date', 'status' ];
-  usersList: IUser[] = UsersList;
+  @Input({required: true}) usersList: IUser[] = [];
 
   @Output('userSelected') userSelectedEmitt = new EventEmitter<IUser>();
 
