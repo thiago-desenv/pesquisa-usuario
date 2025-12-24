@@ -9,8 +9,10 @@ import { UsersList } from './data/users-list';
 })
 export class AppComponent {
   userSelected: IUser = {} as IUser;
+  showUserDetails: boolean = false;
 
   onUserSelected(user: IUser) {
     this.userSelected = user;
+    this.showUserDetails = true;
   }
 }
