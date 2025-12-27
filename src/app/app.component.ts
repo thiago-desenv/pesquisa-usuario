@@ -13,12 +13,12 @@ export class AppComponent implements OnInit {
   showUserDetails: boolean = false;
 
    usersList: IUser[] = [];
-
-   statusList: IFilterOptions = {} as IFilterOptions;
+   usersListFiltered: IUser[] = [];
 
   ngOnInit() {
     setTimeout(() => {
       this.usersList = UsersList;
+      this.usersListFiltered = this.usersList;
     }, 500);
   }
 
@@ -28,6 +28,6 @@ export class AppComponent implements OnInit {
   }
 
   onFilter(filter: IFilterOptions) {
-    this.statusList = filter;
+
   }
 }
