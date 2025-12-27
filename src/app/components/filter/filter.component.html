@@ -23,14 +23,14 @@
     <div class="form__status">
       <mat-form-field>
         <mat-label>Status</mat-label>
-        <mat-select>
-            <!-- <mat-option *ngFor="let food of foods" [value]="food.value">{{food.viewValue}}</mat-option> -->
+        <mat-select [(ngModel)]="filterOptions.status">
+            <mat-option *ngFor="let status of statusList" [value]="status.value">{{status.description}}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
 
     <div class="form__button">
-      <button mat-raised-button color="primary">Filtrar</button>
+      <button mat-raised-button color="primary" (click)="onFilter()">Filtrar</button>
     </div>
   </div>
 </div>
