@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     setTimeout(() => {
       this.usersList = UsersList;
-    }, 3000);
+    }, 500);
   }
 
   onUserSelected(user: IUser) {
