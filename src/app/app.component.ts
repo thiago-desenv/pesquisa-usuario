@@ -28,6 +28,25 @@ export class AppComponent implements OnInit {
   }
 
   onFilter(filter: IFilterOptions) {
+    console.log(filter);
+    this.usersListFiltered = this.filterUsersList(filter, this.usersList);
+  }
 
+  filterUsersList(filter: IFilterOptions, usersList: IUser[]): IUser[] {
+    let filteredList: IUser[] = [];
+
+    filteredList = this.filterUsersListByName(filter.name, usersList);
+
+    return filteredList;
+  }
+
+  filterUsersListByName(name: string | undefined, usersList: IUser[]): IUser[] {
+    const NAME_NOT_TYPPED = name === undefined;
+    if(NAME_NOT_TYPPED) {
+      return usersList;
+    }
+
+    const filteredList = usersList.filter((user) => user.nome.toLowerCase().includes(name.toLowerCase()));
+    return filteredList;
   }
 }
