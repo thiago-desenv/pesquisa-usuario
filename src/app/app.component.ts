@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IUser } from './interfaces/user/user.interface';
 import { UsersList } from './data/users-list';
 import { IFilterOptions } from './interfaces/filter-options.interface';
-import { isWithinInterval } from 'date-fns';
+import { filterUsersList } from './filters/filter-users-list';
 
 @Component({
   selector: 'app-root',
@@ -29,48 +29,6 @@ export class AppComponent implements OnInit {
   }
 
   onFilter(filter: IFilterOptions) {
-    console.log(filter);
-    this.usersListFiltered = this.filterUsersList(filter, this.usersList);
-  }
-
-  filterUsersList(filter: IFilterOptions, usersList: IUser[]): IUser[] {
-    let filteredList: IUser[] = [];
-
-    filteredList = this.filterUsersListByName(filter.name, usersList);
-    filteredList = this.filterUsersListByStatus(filter.status, filteredList);
-    filteredList = this.filterUsersListByDate(filter.startDate, filter.endDate, filteredList);
-
-    return filteredList;
-  }
-
-  filterUsersListByName(name: string | undefined, usersList: IUser[]): IUser[] {
-    const NAME_NOT_TYPPED = name === undefined;
-    if(NAME_NOT_TYPPED) {
-      return usersList;
-    }
-
-    const filteredList = usersList.filter((user) => user.nome.toLowerCase().includes(name.toLowerCase()));
-    return filteredList;
-  }
-
-  filterUsersListByStatus(status: boolean | undefined, usersList: IUser[]): IUser[] {
-    const STATUS_NOT_SET = status === undefined;
-    if(STATUS_NOT_SET) {
-      return usersList;
-    }
-
-    const filteredList = usersList.filter((user) => user.ativo === status);
-    return filteredList;
-  }
-
-  filterUsersListByDate(startDate: Date | undefined, endDate: Date | undefined, usersList: IUser[]): IUser[] {
-    const DATES_NOT_SET = startDate === undefined || endDate === undefined;
-    if(DATES_NOT_SET) {
-      return usersList;
-    }
-
-    const checkDateInterval = (user: IUser) => isWithinInterval(new Date(user.dataCadastro), { start: startDate, end: endDate });
-    const filteredList = usersList.filter(checkDateInterval);
-    return filteredList;
+    this.usersListFiltered = filterUsersList(filter, this.usersList);
   }
 }
